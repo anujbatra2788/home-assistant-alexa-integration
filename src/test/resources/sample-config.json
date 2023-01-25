@@ -5,9 +5,13 @@
   "sslVerify": true,
   "transformationConfig": [
     {
-      "path": "$.event.payload.endpoints[*].friendlyName",
+      "path": "$.event.payload.endpoints[*]",
       "regex": "[^-]+$",
-      "groupExtractor": 0
+      "groupExtractor": 2
+    },
+    {
+      "path": "$.event.payload.endpoints[*].friendlyName",
+      "regex": "[^-]+$"
     }
   ]
 }

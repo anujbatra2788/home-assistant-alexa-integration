@@ -1,5 +1,5 @@
 {
-  "homeAssistantURL": "http://ha.local:8123",
+  "homeAssistantURL": "http://ha.local",
   "bearerToken": "TOKEN",
   "debug": true,
   "sslVerify": true,

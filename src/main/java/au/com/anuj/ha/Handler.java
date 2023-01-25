@@ -1,30 +1,29 @@
 package au.com.anuj.ha;
 
+import au.com.anuj.ha.connector.HAConnector;
+import au.com.anuj.ha.connector.impl.AlexaConnector;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import lombok.SneakyThrows;
 
+import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Handler implements RequestHandler<Map<String,String>, String> {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+public class Handler implements RequestHandler<Object, String> {
+    @SneakyThrows
     @Override
-    public String handleRequest(Map<String,String> event, Context context)
-    {
+    public String handleRequest(Object event, Context context) {
         LambdaLogger logger = context.getLogger();
-        String response = new String("200 OK");
-        // log execution details
-        logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
-        logger.log("CONTEXT: " + gson.toJson(context));
-        // process event
-        logger.log("EVENT: " + gson.toJson(event));
-        logger.log("EVENT TYPE: " + event.getClass().toString());
+        HAConnector connector = new AlexaConnector(""/*gson.toJson(event)*/);
+        String response = null;
+        try {
+            response = connector.getDevices();
+            logger.log("RESPONSE: " + response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return response;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

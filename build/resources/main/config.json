@@ -1,7 +1,0 @@
-{
-  "homeAssistantURL": "http://ha.local:8123",
-  "bearerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIwZTBjNmY5Y2I2M2M0M2JmYWU5ZDAyZDRjOGFiMGM3MSIsImlhdCI6MTY3NDQ1MTEwOCwiZXhwIjoxOTg5ODExMTA4fQ.hUt3EswP6HXUhDqCJmhZtrEoq8y43L98ZqP7GHoaoVY",
-  "debug": true,
-  "sslVerify": true,
-  "sslClient": []
-}
